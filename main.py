@@ -6,7 +6,7 @@ import os
 
 
 settings = {}
-repo = Github(os.environ["GITHUB_ID"], os.environ["GITHUB_PW!"]).get_user().get_repo(os.environ["GITHUB_REPO"])
+repo = Github(os.environ["GITHUB_ID"], os.environ["GITHUB_PW"]).get_user().get_repo(os.environ["GITHUB_REPO"])
 
 def send(text):
 	url = "https://api.telegram.org/bot{token}/sendmessage".format(token=os.environ["TOKEN"])
