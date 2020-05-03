@@ -41,8 +41,7 @@ def remove_uploads(data, old_url):
 def DB_reload():
 	contents = repo.get_contents(os.environ["GITHUB_DB_NAME"])
 	data = json.loads(contents.decoded_content)
-	settings["last_post"] = data["last_post"]
-	return data
+	return data["last_post"]
 
 def DB_update(last_post):
 	contents = repo.get_contents(os.environ["GITHUB_DB_NAME"])
@@ -50,9 +49,9 @@ def DB_update(last_post):
 
 def main():
 	a = getPostList(os.environ["INPUT"])
-	DB_reload()
-	if not (a[0]["url"] == settings["last_post"]):
-		a = remove_uploads(a, settings["last_post"])
+	b = DB_reload()
+	if not (a[0]["url"] == b):
+		a = remove_uploads(a, b)
 		print("[채널] 발송: (총 {}개)".format(len(a)))
 		for i in a:
 			text = os.environ["MESSAGE_FORMAT"].format(time=i["time"], url=i["url"], title=i["title"], view=i["view"], author=i['author'])
