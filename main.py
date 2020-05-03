@@ -40,7 +40,6 @@ def remove_uploads(data, old_url):
 def DB_reload():
 	contents = repo.get_contents(os.environ["GITHUB_DB_NAME"])
 	data = json.loads(contents.decoded_content)
-	print(data)
 	return data["last_post"]
 
 def DB_update(last_post):
