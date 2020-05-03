@@ -54,7 +54,7 @@ def main():
 		print("[채널] 발송: (총 {}개)".format(len(a)))
 		for i in a:
 			text = os.environ["MESSAGE_FORMAT"].format(time=i["time"], url=i["url"], title=i["title"], view=i["view"], author=i['author'])
-			send(text=text)
+			print(send(text=text))
 			print("[채널] 발송: 제목: {}".format(i["title"]))
 		print("[채널] 발송: (완료)")
 		print("[DB] 수정: (시작)")
