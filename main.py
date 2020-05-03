@@ -5,7 +5,7 @@ import json
 import os
 
 
-settings = {}
+settings = {"last_post":""}
 repo = Github(os.environ["GITHUB_ID"], os.environ["GITHUB_PW"]).get_user().get_repo(os.environ["GITHUB_REPO"])
 
 def send(text):
