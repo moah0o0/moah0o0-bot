@@ -5,7 +5,6 @@ import json
 import os
 
 
-settings = {"last_post":""}
 repo = Github(os.environ["GITHUB_ID"], os.environ["GITHUB_PW"]).get_user().get_repo(os.environ["GITHUB_REPO"])
 
 def send(text):
@@ -41,6 +40,7 @@ def remove_uploads(data, old_url):
 def DB_reload():
 	contents = repo.get_contents(os.environ["GITHUB_DB_NAME"])
 	data = json.loads(contents.decoded_content)
+	print(data)
 	return data["last_post"]
 
 def DB_update(last_post):
