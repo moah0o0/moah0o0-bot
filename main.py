@@ -48,6 +48,7 @@ def DB_update(last_post):
 
 def main():
 	a = getPostList(os.environ["INPUT"])
+	print(os.environ)
 	b = DB_reload()
 	if not (a[0]["url"] == b):
 		a = remove_uploads(a, b)
